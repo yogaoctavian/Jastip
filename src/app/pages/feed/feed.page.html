@@ -1,0 +1,44 @@
+<ion-header style="background-color: #ffdd09;">
+  <ion-toolbar>
+      <ion-searchbar (ionInput)="getItems($event)">
+        </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-slides pager>
+      <ion-slide>
+        <img src= "assets/welcome.jpg"/>
+      </ion-slide>
+      <ion-slide>
+        <img src= "assets/abiswelcome.jpg"/>
+      </ion-slide>
+  </ion-slides>
+  <div *ngFor="let cat of items" class="category-block">  
+    <ion-row no-padding class="category-banner">
+      <ion-col text-left button tappable (click)="cat.expanded = !cat.expanded" align-self-center>
+        {{ cat.category }}
+      </ion-col>
+    </ion-row>
+ 
+    <ion-slides [options]="sliderConfig">
+      <ion-slide *ngFor="let product of cat.products">
+        <div *ngIf="cat.expanded">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{ product.name }} - Rp{{ product.price }}
+              </ion-card-title>
+              <ion-card-content>
+                <img src="assets/logo.jpg">
+                <ion-button expand="full" (click)="addToCart(product)">Add to Cart</ion-button>
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
+ 
+  </div>
+
+</ion-content>
