@@ -10,7 +10,7 @@ export class CartService {
       category: 'BAJU',
       expanded: true,
       products: [
-        { id: 0, name: 'Daster Hawai', price: '200k' },
+        { id: 0, name: 'tanktop Hawai', price: '200k' },
         { id: 1, name: 'Kemeja Pantai', price: '150k' },
         { id: 2, name: 'Jas Lab', price: '250k' },
         { id: 3, name: 'Baju Bengkel', price: '50k' }
