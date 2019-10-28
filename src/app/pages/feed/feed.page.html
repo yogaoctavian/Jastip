@@ -1,7 +1,12 @@
-<ion-header style="background-color: #ffdd09;">
+<ion-header>
   <ion-toolbar>
       <ion-searchbar (ionInput)="getItems($event)">
         </ion-searchbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="signOut()">
+          <ion-icon name="log-out"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

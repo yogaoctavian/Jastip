@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -9,19 +10,35 @@ const routes: Routes = [
     children: [
         {
             path: 'feed',
-            loadChildren: () => import('../pages/feed/feed.module').then(m => m.FeedPageModule)
+            loadChildren: '../pages/feed/feed.module#FeedPageModule',
+            canActivate: [AuthGuard],
+            data: {
+              role: 'USER'
+            }
         },
         {
             path: 'account',
-            loadChildren: () => import('../pages/account/account.module').then(m => m.AccountPageModule)
+            loadChildren: '../pages/account/account.module#AccountPageModule',
+            canActivate: [AuthGuard],
+            data: {
+              role: 'USER'
+            }
         },
         {
             path: 'cart',
-            loadChildren: () => import('../pages/cart/cart.module').then(m => m.CartPageModule)
+            loadChildren: '../pages/cart/cart.module#CartPageModule',
+            canActivate: [AuthGuard],
+            data: {
+              role: 'USER'
+            }
         },
         {
             path: 'settings',
-            loadChildren: () => import('../pages/settings/settings.module').then(m => m.SettingsPageModule)
+            loadChildren: '../pages/settings/settings.module#SettingsPageModule',
+            canActivate: [AuthGuard],
+            data: {
+              role: 'USER'
+            }
         }
     ]
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../cart.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-feed',
@@ -19,7 +20,7 @@ export class FeedPage implements OnInit {
   };
 
 
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(private router: Router, private cartService: CartService, private auth: AuthService) { }
 
   ngOnInit() {
     this.items = this.cartService.getProducts();
@@ -32,6 +33,10 @@ export class FeedPage implements OnInit {
 
   openCart() {
     this.router.navigate(['cart']);
+  }
+
+  signOut() {
+    this.auth.signOut();
   }
 
 }

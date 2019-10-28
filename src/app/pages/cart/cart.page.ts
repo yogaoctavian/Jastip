@@ -14,9 +14,9 @@ export class CartPage implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    let items = this.cartService.getCart();
-    let selected = {};
-    for (let obj of items) {
+    const items = this.cartService.getCart();
+    const selected = {};
+    for (const obj of items) {
       if (selected[obj.id]) {
         selected[obj.id].count++;
       } else {
